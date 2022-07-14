@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Cart from './Cart';
+import CartContext from './cart-context';
 import classes from './Headers.module.css'
 
 const Heading = () => {
+
+    const cartCtx = useContext(CartContext)
 
     const [showCart, setShowCart] = useState(false)
 
@@ -22,7 +25,7 @@ const Heading = () => {
         <li>About</li>
     </ul>
     <button onClick={onCartClickHander}>Cart</button>
-    <sup>0</sup>
+    <sup>{cartCtx.items.length}</sup>
     {showCart && <Cart onXClick={onXClickHandler}/>}
     <h1 className={classes.heading}>The Generics</h1></>
 }
