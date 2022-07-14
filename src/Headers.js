@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { Route, NavLink, Link } from 'react-router-dom';
 import Cart from './Cart';
 import CartContext from './cart-context';
 import classes from './Headers.module.css'
@@ -20,9 +21,13 @@ const Heading = () => {
     }
     return <>
     <ul className={classes.menu}>
-        <li>Home</li>
+        {/* <Route path='/about'> */}
+        <li>
+            <NavLink to='/home'>Home</NavLink></li>
         <li>Store</li>
-        <li>About</li>
+        <li>
+            <NavLink to='/about'>About</NavLink></li>
+        {/* </Route> */}
     </ul>
     <button onClick={onCartClickHander}>Cart</button>
     <sup>{cartCtx.items.length}</sup>
