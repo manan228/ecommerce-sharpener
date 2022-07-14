@@ -16,6 +16,9 @@ const Heading = () => {
         <li>
           <NavLink to="/about">About</NavLink>
         </li>
+        <li>
+          <NavLink to="/contactUs">Contact US</NavLink>
+        </li>
       </ul>
       <h1 className={classes.heading}>The Generics</h1>
     </>

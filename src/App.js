@@ -6,6 +6,7 @@ import Headers from './Headers';
 import About from './About';
 import Store from './Store';
 import Home from './Home';
+import ContactUs from './ContectUs';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home"><Home /></Route>
         <Route path="/store"><Store /></Route>
         <Route path="/about"><About /></Route>
+        <Route path="/contactUs"><ContactUs /></Route>
         <Footer />
       </ CartProvider>
     </div>
