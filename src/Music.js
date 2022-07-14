@@ -38,7 +38,7 @@ const Music = () => {
         {productsArr.map((music) => {
           return <>
             <div>
-                <h2>{music.title}</h2>
+              <h2>{music.title}</h2>
               <img src={music.imageUrl} alt={music.title}/>
             </div>
             <span>${music.price}</span>
