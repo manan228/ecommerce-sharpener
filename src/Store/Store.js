@@ -2,7 +2,7 @@ import Products from "./Products";
 import { useContext, useState } from "react";
 import CartButton from "./CartButton";
 import Cart from "./Cart";
-import CartContext from "./cart-context";
+import CartContext from "../Store/cart-context";
 
 const Store = () => {
   const cartCtx = useContext(CartContext);

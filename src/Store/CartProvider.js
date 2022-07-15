@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CartContext from "./cart-context";
+import CartContext from "../Store/cart-context";
 
 const CartProvider = (props) => {
   const [cartElements, setCartElement] = useState([]);

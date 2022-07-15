@@ -1,17 +1,22 @@
 import './App.css';
 import {Route} from 'react-router-dom';
-import CartProvider from './CartProvider';
+import CartProvider from '../src/Store/CartProvider';
 import Footer from './Footer';
 import Headers from './Headers';
-import About from './About';
-import Store from './Store';
-import Home from './Home';
-import ContactUs from './ContectUs';
-import ProductDetails from './ProductDetails';
-import Login from './Login';
-import AuthProvider from './AuthProvider';
+import About from './About/About';
+import Store from '../src/Store/Store';
+import Home from './Home/Home';
+import ContactUs from './ContactUs/ContectUs';
+import ProductDetails from '../src/Store/ProductDetails';
+import Login from './Login/Login';
+import AuthProvider from './Login/AuthProvider';
+import { useContext } from 'react';
+import AuthContext from './Login/auth-context';
 
 function App() {
+
+  const authCtx = useContext(AuthContext)
+  console.log(authCtx)
   return (
     <div className="App">
       <AuthProvider>
@@ -19,11 +24,11 @@ function App() {
       <Headers />
         <Route path='/auth'><Login /></Route>
         <Route path="/home"><Home /></Route>
-        <Route path="/store"><Store /></Route>
+        {authCtx.isLogin && <Route path="/store"><Store /></Route>}
         <Route path="/about"><About /></Route>
         <Route path="/contactUs"><ContactUs /></Route>
         <Route path="/product/:productId"><ProductDetails /></Route>
-        <Footer />
+      <Footer />
       </ CartProvider>
       </AuthProvider>
     </div>
