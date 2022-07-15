@@ -17,6 +17,9 @@ const Heading = () => {
           <NavLink to="/about">About</NavLink>
         </li>
         <li>
+          <NavLink to="/auth">Login</NavLink>
+        </li>
+        <li>
           <NavLink to="/contactUs">Contact US</NavLink>
         </li>
       </ul>

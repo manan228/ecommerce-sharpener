@@ -4,18 +4,18 @@ import CartContext from "./cart-context";
 const CartProvider = (props) => {
   const [cartElements, setCartElement] = useState([]);
 
-  const addToCartElement = (props) => {
+  const addToCartElement = (element) => {
     if (cartElements.length === 0) {
-      setCartElement([...cartElements, { ...props, quantity: 1 }]);
+      setCartElement([...cartElements, { ...element, quantity: 1 }]);
     } else {
       cartElements.map((item) => {
-        if (item.title === props.title) {
+        if (item.title === element.title) {
           return setCartElement([
             ...cartElements,
-            { ...props, quantity: props.quantity + 1 },
+            { ...element, quantity: item.quantity + 1 },
           ]);
         } else {
-          return setCartElement([...cartElements, { ...props, quantity: 1 }]);
+          return setCartElement([...cartElements, { ...element, quantity: 1 }]);
         }
       });
     }
