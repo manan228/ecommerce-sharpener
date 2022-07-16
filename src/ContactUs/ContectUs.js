@@ -20,8 +20,6 @@ const ContactUs = () => {
             "https://react-http-b7832-default-rtdb.firebaseio.com/user.json",
             userData
           );
-
-          console.log(response.data);
     }
     catch(error) {
         console.log(error)

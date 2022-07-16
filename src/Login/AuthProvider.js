@@ -5,15 +5,16 @@ const AuthProvider = (props) => {
     // console.log(`hii`)
     const [token, setToken] = useState(null)
     const [isLogin, setIsLogin] = useState(false);
-
+    const [emailId, setEmailId] = useState('')
     // const isLogin = !!token;
     // let isLogin1 = false
     // console.log(isLogin)
 
-    const loginHandler = (idToken) => {
+    const loginHandler = (idToken, email) => {
 
         setToken(idToken)
         setIsLogin(true)
+        setEmailId(email)
         // console.log(`afer setToken`)
     }
 
@@ -23,7 +24,8 @@ const AuthProvider = (props) => {
 
         token: token,
         isLogin: isLogin, 
-        login: loginHandler
+        login: loginHandler,
+        email: emailId
     }
     // console.log(authContext)
     return <AuthContext.Provider value={authContext}>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useRef } from "react";
 import { Redirect, useHistory } from "react-router-dom";
+import CartContext from "../Store/cart-context";
 import AuthContext from "./auth-context";
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
 
   const history = useHistory();
   const authCtx = useContext(AuthContext);
+  // const cartCtx = useContext(CartContext);
 
   // useEffect(() => {
 
@@ -35,14 +37,13 @@ const Login = () => {
       );
 
       const token = response.data.idToken;
-      authCtx.login(token);
-      console.log(authCtx.isLogin)
+      const email = response.data.email;
+      
+      authCtx.login(token, email);
       history.replace('/store')
     } catch (error) {
       console.log(error);
     }
-
-    console.log(`before redirect to store`);
 
     // <Redirect to='/store' />
     // history.replace('/store')

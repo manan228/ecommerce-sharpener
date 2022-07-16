@@ -5,7 +5,7 @@ import classes from "./Headers.module.css";
 import AuthContext from "./Login/auth-context";
 
 const Heading = () => {
-  // console.log(`headers`)    
+  
   return (
     <>
       <ul className={classes.menu}>

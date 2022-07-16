@@ -2,7 +2,6 @@ import classes from './Home.module.css';
 
 const Home = () => {
 
-    console.log(`Home`)
     return <>
         <h1>TOURS</h1>
         <ul>

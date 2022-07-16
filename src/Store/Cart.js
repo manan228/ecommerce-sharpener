@@ -3,7 +3,6 @@ import CartContext from "./cart-context";
 import "./Cart.module.css";
 
 const Cart = (props) => {
-  const cartCtx = useContext(CartContext);
 
   return (
     <section>
@@ -15,7 +14,7 @@ const Cart = (props) => {
         <span>Quantity</span>
       </div>
       <div>
-        {cartCtx.items.map((item) => {
+        {props.data.map((item) => {
           return (
             <div>
               <span>{item.title}</span>
