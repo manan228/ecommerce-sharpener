@@ -5,6 +5,8 @@ import Cart from "./Cart";
 import CartContext from "../Store/cart-context";
 
 const Store = () => {
+
+  // console.log(`Store`)
   const cartCtx = useContext(CartContext);
 
   const [showCart, setShowCart] = useState(false);
@@ -19,7 +21,6 @@ const Store = () => {
 
   return (
     <>
-    <div>Store123</div>
       <CartButton onClick={onCartClickHander}></CartButton>
       <sup>{cartCtx.items.length}</sup>
       {showCart && <Cart onXClick={onXClickHandler} />}

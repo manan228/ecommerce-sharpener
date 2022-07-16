@@ -37,7 +37,7 @@ const Music = () => {
       <section>
         {productsArr.map((music) => {
           return (
-            <>
+            <div key={music.title}>
               <div>
                 <h2>{music.title}</h2>
                 <Link to={`/product/${music.title}`}>
@@ -48,7 +48,7 @@ const Music = () => {
               <button onClick={() => cartCtx.addElement(music)}>
                 Add To Cart
               </button>
-            </>
+            </div>
           );
         })}
       </section>

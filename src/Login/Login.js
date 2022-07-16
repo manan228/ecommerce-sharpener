@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import AuthContext from "./auth-context";
 
@@ -9,6 +9,14 @@ const Login = () => {
 
   const history = useHistory();
   const authCtx = useContext(AuthContext);
+
+  // useEffect(() => {
+
+  //   console.log(authCtx.isLogin)
+  //   if(authCtx.isLogin) {
+  //     <Redirect to="/store" />
+  //   }
+  // }, [authCtx.isLogin])
 
   const onLoginSubmitHandler = async (event) => {
     event.preventDefault();
@@ -27,14 +35,17 @@ const Login = () => {
       );
 
       const token = response.data.idToken;
-      console.log(token)
       authCtx.login(token);
+      console.log(authCtx.isLogin)
+      history.replace('/store')
     } catch (error) {
       console.log(error);
     }
 
+    console.log(`before redirect to store`);
+
     // <Redirect to='/store' />
-    history.replace('/store')
+    // history.replace('/store')
     console.log(`inside submit handler`);
   };
 

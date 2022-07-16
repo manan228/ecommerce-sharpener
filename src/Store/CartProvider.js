@@ -3,33 +3,37 @@ import CartContext from "../Store/cart-context";
 
 const CartProvider = (props) => {
   const [cartElements, setCartElement] = useState([]);
+  console.log(`cart element`, cartElements);
 
   const addToCartElement = (element) => {
-    console.log(`element`, element)
+    console.log(element);
     if (cartElements.length === 0) {
-      console.log(`0 element if`)
       setCartElement([...cartElements, { ...element, quantity: 1 }]);
     } else {
       cartElements.map((item) => {
-        console.log(`else item`, item)
+        // console.log(`map`)
+
         if (item.title === element.title) {
-          console.log(`inside else if`, item)
           item.quantity += 1;
-          setCartElement((prevState) => [...prevState.filter(el => el.id !== item.id), item])
-          // return setCartElement([
-          //   ...cartElements,
-          //   { ...element, quantity: item.quantity + 1 },
-          // ]);
+          console.log(item.quantity)
+          return setCartElement((prevState) => [
+            ...prevState.filter((el) =>
+              el.title !== item.title ? true : item
+            ),
+          ]);
         } else {
-          console.log(`else else item`, item)
+          console.log(`else else item`, item);
+          setCartElement((prevState) => [
+            ...prevState.filter((el) =>
+              el.title !== item.title ? true : item
+            ),
+          ]);
           // setCartElement((prevState) => [...prevState, item])
           return setCartElement([...cartElements, { ...element, quantity: 1 }]);
         }
       });
     }
   };
-
-  console.log(`cartElement`, cartElements)
 
   const cartCtx = {
     items: cartElements,

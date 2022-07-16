@@ -15,28 +15,28 @@ import AuthContext from "./Login/auth-context";
 
 function App() {
   const authCtx = useContext(AuthContext);
-  // console.log(authCtx.isLogin);
+  // console.log(authCtx)
   return (
     <div className="App">
       <AuthProvider>
-        {/* {console.log(authCtx.isLogin)} */}
         <CartProvider>
-        {console.log(authCtx.isLogin, `store 1234`)}
           <Headers />
-          <Switch>
+          {/* <Switch> */}
             <Route path="/" exact>
               <Redirect to="/home" />
             </Route>
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/store" exact>
-          {authCtx.isLogin && <Store />}
-          {/* {!authCtx.isLogin && <Redirect to='/auth' />} */}
-          </Route>
+            {/* {console.log(`rerendering app.js`)} */}
             {/* <Route path="/store">
+            {console.log(`rerendering app.js inside route store`)}
+          {authCtx.isLogin && <Store />}
+          {!authCtx.isLogin && <Redirect to='/auth' />}
+          </Route> */}
+            <Route path="/store">
               <Store />
-            </Route> */}
+            </Route>
             <Route path="/auth">
               <Login />
             </Route>
@@ -49,7 +49,7 @@ function App() {
             <Route path="/product/:productId">
               <ProductDetails />
             </Route>
-          </Switch>
+          {/* </Switch> */}
           <Footer />
         </CartProvider>
       </AuthProvider>
