@@ -34,7 +34,7 @@ const Login = () => {
     }
 
     // <Redirect to='/store' />
-    // history.replace('/store')
+    history.replace('/store')
     console.log(`inside submit handler`);
   };
 
