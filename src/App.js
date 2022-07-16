@@ -1,5 +1,5 @@
 import './App.css';
-import {Route} from 'react-router-dom';
+import {Redirect, Route} from 'react-router-dom';
 import CartProvider from '../src/Store/CartProvider';
 import Footer from './Footer';
 import Headers from './Headers';
@@ -16,7 +16,7 @@ import AuthContext from './Login/auth-context';
 function App() {
 
   const authCtx = useContext(AuthContext)
-  console.log(authCtx)
+  console.log(authCtx.isLogin)
   return (
     <div className="App">
       <AuthProvider>
@@ -24,7 +24,11 @@ function App() {
       <Headers />
         <Route path='/auth'><Login /></Route>
         <Route path="/home"><Home /></Route>
-        {authCtx.isLogin && <Route path="/store"><Store /></Route>}
+        {/* <Route path="/store" exact>
+          {authCtx.isLogin && <Store />}
+          {!authCtx.isLogin && <Redirect to='/auth' />}
+          </Route> */}
+        <Route path="/store"><Store /></Route>
         <Route path="/about"><About /></Route>
         <Route path="/contactUs"><ContactUs /></Route>
         <Route path="/product/:productId"><ProductDetails /></Route>

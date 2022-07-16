@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import AuthContext from "./auth-context";
 
 const Login = () => {
@@ -27,13 +27,14 @@ const Login = () => {
       );
 
       const token = response.data.idToken;
-
+      console.log(token)
       authCtx.login(token);
     } catch (error) {
       console.log(error);
     }
 
-    history.replace('/store')
+    // <Redirect to='/store' />
+    // history.replace('/store')
     console.log(`inside submit handler`);
   };
 

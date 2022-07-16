@@ -6,6 +6,7 @@ const AuthProvider = (props) => {
     const [token, setToken] = useState(null)
     
     const isLogin = !!token;
+    console.log(isLogin)
 
     const loginHandler = (idToken) => {
 
