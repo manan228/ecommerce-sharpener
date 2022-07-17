@@ -1,36 +1,29 @@
-import { useState } from "react"
-import AuthContext from "./auth-context"
+import { useState } from "react";
+import AuthContext from "./auth-context";
 
 const AuthProvider = (props) => {
-    // console.log(`hii`)
-    const [token, setToken] = useState(null)
-    const [isLogin, setIsLogin] = useState(false);
-    const [emailId, setEmailId] = useState('')
-    // const isLogin = !!token;
-    // let isLogin1 = false
-    // console.log(isLogin)
+  const [token, setToken] = useState(null);
+  const [emailId, setEmailId] = useState("");
 
-    const loginHandler = (idToken, email) => {
+  let isLogin;
 
-        setToken(idToken)
-        setIsLogin(true)
-        setEmailId(email)
-        // console.log(`afer setToken`)
-    }
+  const loginHandler = (idToken, email) => {
+    setToken(idToken);
+    setEmailId(email);
+  };
 
-    // console.log(`afer loginHandler`)
+  const authContext = {
+    token: token,
+    isLogin: token,
+    login: loginHandler,
+    email: emailId,
+  };
 
-    const authContext = {
-
-        token: token,
-        isLogin: isLogin, 
-        login: loginHandler,
-        email: emailId
-    }
-    // console.log(authContext)
-    return <AuthContext.Provider value={authContext}>
-        {props.children}
+  return (
+    <AuthContext.Provider value={authContext}>
+      {props.children}
     </AuthContext.Provider>
-}
+  );
+};
 
-export default AuthProvider
+export default AuthProvider;

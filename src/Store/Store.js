@@ -13,12 +13,14 @@ const Store = () => {
   const formattedEmail = cartCtx.userEmail
   const [showCart, setShowCart] = useState(false);
   const [receivedData, setReceivedData] = useState([])
-  // let receivedData = []
+
   const onCartClickHander = async() => {
 
-    const response = await axios.get(`https://crudcrud.com/api/697618ab1f964d6f8533f7b21673a7b8/cart${formattedEmail}`);
-    console.log(response.data[0].elements)
-    setReceivedData(response.data[0].elements)
+    const response = await axios.get(`https://crudcrud.com/api/258d9a4f7ecb4216a3b535009d0af122/cart${formattedEmail}`);
+    
+    const data = response.data[0].elements
+    
+    setReceivedData(data)
     setShowCart(true);
   };
 

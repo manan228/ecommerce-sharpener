@@ -10,15 +10,6 @@ const Login = () => {
 
   const history = useHistory();
   const authCtx = useContext(AuthContext);
-  // const cartCtx = useContext(CartContext);
-
-  // useEffect(() => {
-
-  //   console.log(authCtx.isLogin)
-  //   if(authCtx.isLogin) {
-  //     <Redirect to="/store" />
-  //   }
-  // }, [authCtx.isLogin])
 
   const onLoginSubmitHandler = async (event) => {
     event.preventDefault();
@@ -38,16 +29,12 @@ const Login = () => {
 
       const token = response.data.idToken;
       const email = response.data.email;
-      
+
       authCtx.login(token, email);
-      history.replace('/store')
+      history.replace("/store");
     } catch (error) {
       console.log(error);
     }
-
-    // <Redirect to='/store' />
-    // history.replace('/store')
-    console.log(`inside submit handler`);
   };
 
   return (

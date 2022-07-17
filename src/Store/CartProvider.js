@@ -3,6 +3,32 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../Login/auth-context";
 import CartContext from "../Store/cart-context";
 
+const productsArr = [
+  {
+    title: "Colors",
+    price: 100,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+  },
+
+  {
+    title: "Black and white Colors",
+    price: 50,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+  },
+
+  {
+    title: "Yellow and Black Colors",
+    price: 70,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+  },
+
+  {
+    title: "Blue Color",
+    price: 100,
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+  },
+];
+
 const CartProvider = (props) => {
   const authCtx = useContext(AuthContext);
 
@@ -10,22 +36,32 @@ const CartProvider = (props) => {
   const formattedEmail = authCtx.email.replace(/[^a-zA-Z0-9]/g, "");
 
   useEffect(() => {
-
     const obj = {
       elements: cartElements,
     };
 
-    axios.get(`https://crudcrud.com/api/697618ab1f964d6f8533f7b21673a7b8/cart${formattedEmail}`).then(res => {
-      
-    if(res.data.length !== 0) {
-      
-      const id = res.data[0]._id;
-      axios.put(`https://crudcrud.com/api/697618ab1f964d6f8533f7b21673a7b8/cart${formattedEmail}/${id}`,obj).then(res => console.log(res));
-    } else {
-      
-      axios.post(`https://crudcrud.com/api/697618ab1f964d6f8533f7b21673a7b8/cart${formattedEmail}`,obj).then(res => console.log(res));
-    }
-    });
+    axios
+      .get(
+        `https://crudcrud.com/api/258d9a4f7ecb4216a3b535009d0af122/cart${formattedEmail}`
+      )
+      .then((res) => {
+        if (res.data.length !== 0) {
+          const id = res.data[0]._id;
+          axios
+            .put(
+              `https://crudcrud.com/api/258d9a4f7ecb4216a3b535009d0af122/cart${formattedEmail}/${id}`,
+              obj
+            )
+            .then((res) => console.log(res));
+        } else {
+          axios
+            .post(
+              `https://crudcrud.com/api/258d9a4f7ecb4216a3b535009d0af122/cart${formattedEmail}`,
+              obj
+            )
+            .then((res) => console.log(res));
+        }
+      });
   }, [cartElements]);
 
   const addToCartElement = (element) => {
@@ -47,7 +83,8 @@ const CartProvider = (props) => {
   const cartCtx = {
     items: cartElements,
     addElement: addToCartElement,
-    userEmail: formattedEmail
+    userEmail: formattedEmail,
+    allProducts: productsArr,
   };
 
   return (
