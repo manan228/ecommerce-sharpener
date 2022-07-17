@@ -10,7 +10,6 @@ const ProductDetails = () => {
     (item) => item.title == params.productId
   );
 
-  console.log(selectedProduct);
   return (
     <div>
       Product Details Page
