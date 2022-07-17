@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useContext, useEffect, useRef } from "react";
-import { Redirect, useHistory } from "react-router-dom";
-import CartContext from "../Store/cart-context";
+import { useContext, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import AuthContext from "./auth-context";
 
 const Login = () => {

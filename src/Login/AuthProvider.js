@@ -5,8 +5,6 @@ const AuthProvider = (props) => {
   const [token, setToken] = useState(null);
   const [emailId, setEmailId] = useState("");
 
-  let isLogin;
-
   const loginHandler = (idToken, email) => {
     setToken(idToken);
     setEmailId(email);

@@ -7,7 +7,7 @@ const ProductDetails = () => {
   const params = useParams();
 
   const selectedProduct = cartCtx.allProducts.find(
-    (item) => item.title == params.productId
+    (item) => item.title === params.productId
   );
 
   return (

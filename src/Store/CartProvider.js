@@ -42,37 +42,37 @@ const CartProvider = (props) => {
 
     axios
       .get(
-        `https://crudcrud.com/api/258d9a4f7ecb4216a3b535009d0af122/cart${formattedEmail}`
+        `https://crudcrud.com/api/de464932a2514ac1904f679a4cbbfad3/cart${formattedEmail}`
       )
       .then((res) => {
         if (res.data.length !== 0) {
           const id = res.data[0]._id;
           axios
             .put(
-              `https://crudcrud.com/api/258d9a4f7ecb4216a3b535009d0af122/cart${formattedEmail}/${id}`,
+              `https://crudcrud.com/api/de464932a2514ac1904f679a4cbbfad3/cart${formattedEmail}/${id}`,
               obj
             )
             .then((res) => console.log(res));
         } else {
           axios
             .post(
-              `https://crudcrud.com/api/258d9a4f7ecb4216a3b535009d0af122/cart${formattedEmail}`,
+              `https://crudcrud.com/api/de464932a2514ac1904f679a4cbbfad3/cart${formattedEmail}`,
               obj
             )
             .then((res) => console.log(res));
         }
       });
-  }, [cartElements]);
+  }, [cartElements, formattedEmail]);
 
   const addToCartElement = (element) => {
     element = { ...element, quantity: 1 };
 
-    const isThere = cartElements.find((item) => item.title == element.title);
+    const isThere = cartElements.find((item) => item.title === element.title);
 
     if (isThere) {
       element = { ...element, quantity: isThere.quantity + 1 };
       setCartElement((prevState) => [
-        ...prevState.filter((el) => el.title != element.title),
+        ...prevState.filter((el) => el.title !== element.title),
         element,
       ]);
     } else {
